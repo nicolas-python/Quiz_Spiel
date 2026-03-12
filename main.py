@@ -1,5 +1,35 @@
 #Quiz spiel
 
+spieler = None
+score = 0
+spieler_list = []
+score_list = []
+
+# score und spieler speichern und laden
+def load_spieler_list():
+    with open("spieler_list.txt", "r") as file:
+        for save in file:
+            spieler_list.append(save)
+
+    return spieler_list
+
+def load_score_list():
+    with open("score_list.txt", "r") as file:
+        for save in file:
+            score_list.append(save)
+
+    return score_list
+
+def save_spieler_list():
+    with open("spieler_list.txt", "w") as file:
+        for save in spieler_list:
+            file.write(save)
+
+def save_score_list():
+    with open("score_list.txt", "w") as file:
+        for save in score_list:
+            file.write(save)
+
 # menü
 def menue():
     choice = None
@@ -44,5 +74,21 @@ while True:
 
     elif wahl == "5":
         print("Spiel beendet")
-        save_speichern()
+        save_spieler_list()
         break
+
+def spieler_erstellen():
+    global score
+    name = input("Spieler erstellen:")
+    print("Du hast den Namen:",name,"gewählt")
+    score = 0
+    return name
+
+def score_anzeigen():
+
+    if len(score_list) == 0:
+        print("Kein Score vorhanden")
+
+    else:
+        for scores in score_list:
+            print(scores)
