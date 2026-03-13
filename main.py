@@ -7,6 +7,7 @@ score_list = []
 
 # score und spieler speichern und laden
 def load_spieler_list():
+    spieler_list.clear()
     with open("spieler_list.txt", "r") as file:
         for save in file:
             spieler_list.append(save)
@@ -15,6 +16,7 @@ def load_spieler_list():
 
 def load_score_list():
     with open("score_list.txt", "r") as file:
+        score_list.clear()
         for save in file:
             score_list.append(save)
 
@@ -29,6 +31,7 @@ def save_score_list():
     with open("score_list.txt", "w") as file:
         for save in score_list:
             file.write(save)
+
 
 # menü
 def menue():
@@ -48,6 +51,66 @@ def menue():
             print("Ungültige Option, bitte erneut zwischen 1,2,3,4,5  wählen.")
 
     return choice
+
+
+
+
+def spieler_erstellen():
+    global score
+    name = input("Spieler erstellen:")
+    print("Du hast den Namen:",name,"gewählt")
+    score = 0
+    spieler_list.append(name + "\n")
+
+    return name
+
+
+
+def spieler_waehlen():
+
+    print("Wähle einen Benutzer")
+    lines = load_spieler_list()
+
+    for user in lines:
+        print(user.strip())             #das\n wieder weggeht
+
+    benutzer = input("Welchen Benutzer ?")
+    print("Du hast den Spieler:",benutzer, "gewählt")
+
+    return benutzer
+
+
+
+def score_anzeigen():
+
+    if len(score_list) == 0:
+        print("Kein Score vorhanden")
+
+    else:
+        for scores in score_list:
+            print(scores)
+
+
+
+def umwandeln_txt(lines):
+    speichern = {}
+    for line in lines:
+        line = line.strip()
+
+        try:
+            if line == "":
+                continue
+
+            spieler, score = line.split("=")
+
+            speichern[spieler] = int(score)
+
+        except ValueError:
+            continue
+
+    return speichern
+
+
 
 while True:
     wahl = menue()
@@ -77,18 +140,3 @@ while True:
         save_spieler_list()
         break
 
-def spieler_erstellen():
-    global score
-    name = input("Spieler erstellen:")
-    print("Du hast den Namen:",name,"gewählt")
-    score = 0
-    return name
-
-def score_anzeigen():
-
-    if len(score_list) == 0:
-        print("Kein Score vorhanden")
-
-    else:
-        for scores in score_list:
-            print(scores)
