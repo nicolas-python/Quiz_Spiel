@@ -132,9 +132,8 @@ def quiz_spiel():
         for i in range(len(antworten)):
             print(i+1,":",antworten[i])         #i steht für die position in der liste
 
-        eingabe = input("Deine Antwort: "
+        eingabe = input("Deine Antwort: ")
 
-                        )
         if eingabe == richtig:
             print("Richtig")
             score += 1
