@@ -32,6 +32,48 @@ def save_score_list():
         for save in score_list:
             file.write(save)
 
+# fragen
+fragen = [
+
+    ("Was ist Python?",
+     ["Ein Programm", "Ein Nahrungsergänzungsmittel", "Eine Automarke", "Ein Promi"],
+     "1"),
+
+    ("Wie definiert man eine Funktion in Python?",
+     ["def", "func", "define","funktion"],
+     "1"),
+
+    ("Wie überprüfe ich ob etwas gleich 10 ist?",
+     ["=", "==", "!=", "==="],
+     "2"),
+
+    ("Was fängt Fehler in Python ab?",
+     ["try/except", "error/handle", "try/catch", "if/else"],
+     "1"),
+
+    ("Welche Variable ist korrekt geschrieben?",
+     ["2name = 'Max'", "name_2 = 'Max'", "name - 'Max'", "name 2 = 'Max'"],
+     "2"),
+
+    ("Welcher Befehl gibt Text in Phyton aus ?",
+     ["echo","print","write","show"],
+     "2"),
+
+    ("Wie schreibt man einen Kommentar in Python ?",
+     ["//","!?","#","*"],
+     "3"),
+
+    ("Wie oft läuft die Schleife? for i in range(5)",
+     ["3","4","5","6"],
+     "3"),
+
+    ("Welche Schleife wird verwendet, um durch alle Elemente einer Liste zu gehen?",
+    ["while","for","loop","repeat"],
+    "2"),
+
+    ("Welche Funktion wird verwendet, um Benutzereingaben zu lesen?",
+    ["scan()","input()","read()","enter()"],
+    "2"),]
 
 # menü
 def menue():
@@ -78,6 +120,27 @@ def spieler_waehlen():
     print("Du hast den Spieler:",benutzer, "gewählt")
 
     return benutzer
+
+
+
+def quiz_spiel():
+    global score
+
+    for frage, antworten, richtig in fragen:
+        print(frage)
+
+        for i in range(len(antworten)):
+            print(i+1,":",antworten[i])         #i steht für die position in der liste
+
+        eingabe = input("Deine Antwort: "
+
+                        )
+        if eingabe == richtig:
+            print("Richtig")
+            score += 1
+
+        else:
+            print("leider falsch")
 
 
 
@@ -131,6 +194,7 @@ while True:
 
         else:
             print("Spieler:", spieler)
+            quiz_spiel()
 
     elif wahl == "4":
         score_anzeigen()
@@ -139,4 +203,5 @@ while True:
         print("Spiel beendet")
         save_spieler_list()
         break
+
 
