@@ -138,7 +138,8 @@ def quiz_spiel():
             score += 1
 
         else:
-            print("leider falsch richtig wäre",antworten[int(richtig)-1])
+            print("leider falsch")
+            print("richtig wäre",antworten[int(richtig)-1])
 
     print("Dein Score:",score)
 
