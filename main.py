@@ -96,7 +96,6 @@ def menue():
 
 
 
-
 def spieler_erstellen():
     global score
     name = input("Spieler erstellen:")
@@ -139,13 +138,14 @@ def quiz_spiel():
             score += 1
 
         else:
-            print("leider falsch richtig wäre")
+            print("leider falsch richtig wäre",antworten[int(richtig)-1])
 
     print("Dein Score:",score)
 
     score_list.append(spieler + "=" +str(score) + "\n")
     save_spieler_list()
     save_score_list()
+
 
 
 def score_anzeigen():
@@ -209,5 +209,3 @@ while True:
         save_spieler_list()
         save_score_list()
         break
-
-
