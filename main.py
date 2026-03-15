@@ -139,18 +139,24 @@ def quiz_spiel():
             score += 1
 
         else:
-            print("leider falsch")
+            print("leider falsch richtig wäre")
 
+    print("Dein Score:",score)
+
+    score_list.append(spieler + "=" +str(score) + "\n")
+    save_spieler_list()
+    save_score_list()
 
 
 def score_anzeigen():
+    load_score_list()
 
     if len(score_list) == 0:
         print("Kein Score vorhanden")
 
     else:
-        for scores in score_list:
-            print(scores)
+        for score in score_list:
+            print(score)
 
 
 
@@ -201,6 +207,7 @@ while True:
     elif wahl == "5":
         print("Spiel beendet")
         save_spieler_list()
+        save_score_list()
         break
 
 
